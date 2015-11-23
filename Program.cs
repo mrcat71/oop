@@ -140,11 +140,11 @@ namespace ConsoleApplication4
         public override void vivod()
         {
             Console.WriteLine("Матрица 2x2: ");
-            Console.Write(m[1, 1] + " ");
-            Console.Write(m[1, 2]);
+            Console.Write("{0:####.###}", m[1, 1] + " ");
+            Console.Write("{0:####.###}", m[1, 2]);
             Console.WriteLine();
-            Console.Write(m[2, 1] + " ");
-            Console.WriteLine(m[2, 2]);
+            Console.Write("{0:####.###}", m[2, 1] + " ");
+            Console.WriteLine("{0:####.###}", m[2, 2]);
         }
         public double Det()
         {
