@@ -64,10 +64,9 @@ namespace ConsoleApplication4
                 matrix1.output();
                 
                 TMatrix2 matrix4 = new TMatrix2();
-                //Console.WriteLine("Результат перемножения матриц :");
-                //matrix4 = matrix;
-                //matrix4.Umn(matrix1);
-                //matrix4.vivod();
+                Console.WriteLine("Результат перемножения матриц :");
+                matrix4 = matrix * matrix1;
+                matrix4.output();
                 Console.WriteLine("Выполняем isRoot. Определяем A^n=B ?");
                 Console.WriteLine("Введите n:");
                 int n;
@@ -176,22 +175,22 @@ namespace ConsoleApplication4
             m[2, 2] = m[2, 2] * h;
 
         }
-        public void Umn(TMatrix2 matrix1)
+
+        public static TMatrix2 operator *(TMatrix2 b, TMatrix2 a) //перегрузка оператора *
         {
+            TMatrix2 c = new TMatrix2();
             double[,] n = new double[3, 3];
-            double a11 = matrix1.m[1, 1];
-            double a12 = matrix1.m[1, 2];
-            double a21 = matrix1.m[2, 1];
-            double a22 = matrix1.m[2, 2];
-            n[1, 1] = m[1, 1] * a11 + m[1, 2] * a21;
-            n[1, 2] = m[1, 1] * a12 + m[1, 2] * a22;
-            n[2, 1] = m[2, 1] * a11 + m[2, 2] * a21;
-            n[2, 2] = m[2, 1] * a12 + m[2, 2] * a22;
-            m[1, 1] = n[1, 1];
-            m[1, 2] = n[1, 2];
-            m[2, 1] = n[2, 1];
-            m[2, 2] = n[2, 2];
+            double a11 = a.m[1, 1];
+            double a12 = a.m[1, 2];
+            double a21 = a.m[2, 1];
+            double a22 = a.m[2, 2];
+            c.m[1, 1] = b.m[1, 1] * a.m[1, 1] + b.m[1, 2] * a.m[2, 1];
+            c.m[1, 2] = b.m[1, 1] * a.m[1, 2] + b.m[1, 2] * a.m[2, 2];
+            c.m[2, 1] = b.m[2, 1] * a.m[1, 1] + b.m[2, 2] * a.m[2, 1];
+            c.m[2, 2] = b.m[2, 1] * a.m[1, 2] + b.m[2, 2] * a.m[2, 2];
+            return c;
         }
+
         public void Del(TMatrix2 matrix1)
         {
             double a11 = matrix1.m[1, 1];
@@ -222,21 +221,6 @@ namespace ConsoleApplication4
     {
         public int b = 0;
         public int a = 0;
-
-        public static TMatrix operator * (TMatrix a, TMatrix b)
-        {
-            TMatrix c = new TMatrix();
-            double[,] n = new double[3, 3];
-            double a11 = a.m[1, 1];
-            double a12 = a.m[1, 2];
-            double a21 = a.m[2, 1];
-            double a22 = a.m[2, 2];
-            c.m[1, 1] = b.m[1, 1] * a11 + b.m[1, 2] * a21;
-            c.m[1, 2] = b.m[1, 1] * a12 + b.m[1, 2] * a22;
-            c.m[2, 1] = b.m[2, 1] * a11 + b.m[2, 2] * a21;
-            c.m[2, 2] = b.m[2, 1] * a12 + b.m[2, 2] * a22;
-            return c;
-        }
 
         public static TMatrix operator -(TMatrix a, TMatrix b) //перегрузка оператора -
         {
