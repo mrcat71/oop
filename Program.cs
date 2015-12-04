@@ -14,7 +14,7 @@ namespace ConsoleApplication4
             Console.WriteLine("Программа работает с 2 клаассами матриц. Второй класс наследник первого и размера только 2х2.");
             Console.WriteLine("Работаем с TMatrix или с TMatrix2? 1/2");
             string s2 = Console.ReadLine();
-            if (s2 == "1")
+            if (s2 == "1")  //smkuzmenko@sfedu.ru
             {
                 TMatrix matrix = new TMatrix();
                 Console.WriteLine("Будем читать из файла или пишем так? F/W");
@@ -99,7 +99,7 @@ namespace ConsoleApplication4
             int i = 2;
             while (i <= n)
             {
-                matrix.Umn(matrix2);
+                matrix = matrix * matrix2; 
                 i++;
             }
             Console.WriteLine("A^n=");
